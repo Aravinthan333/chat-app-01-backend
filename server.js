@@ -12,12 +12,7 @@ const { app, server } = require("./socket/socket.js");
 
 require("dotenv").config();
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST"],
-  })
-);
+app.use(cors());
 
 // const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
