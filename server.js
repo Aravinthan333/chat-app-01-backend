@@ -19,6 +19,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
 // const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
