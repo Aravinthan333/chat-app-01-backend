@@ -2,6 +2,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const authRoutes = require("./routes/auth.routes.js");
 const messageRoutes = require("./routes/message.routes.js");
@@ -17,10 +18,17 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
+
 // const __dirname = path.resolve();
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
 const PORT = process.env.PORT || 5000;
-const HOST = process.env.HOST;
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
@@ -32,7 +40,7 @@ app.use("/api/users", userRoutes);
 //   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 // });
 
-server.listen(PORT, HOST, () => {
+server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server Running on port ${PORT}`);
 });
