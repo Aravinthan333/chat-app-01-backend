@@ -25,7 +25,7 @@ const signup = async (req, res) => {
     // const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
     // const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
-    const pic = `https://eu.ui-avatars.com/api/?name=${username}&size=250`;
+    const pic = `https://eu.ui-avatars.com/api/?name=${fullName}&size=250`;
     const newUser = new User({
       fullName,
       username,
