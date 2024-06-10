@@ -6,7 +6,7 @@ const {
 } = require("../controllers/message.controller.js");
 const protectRoute = require("../middleware/protectRoute.js");
 
-router.get("/:id", protectRoute, getMessages);
-router.post("/send/:id", protectRoute, sendMessage);
+router.get("/:id", getMessages);
+router.post("/send/:id", sendMessage);
 
 module.exports = router;
