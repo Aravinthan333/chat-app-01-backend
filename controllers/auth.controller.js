@@ -39,6 +39,8 @@ const signup = async (req, res) => {
       let token = generateTokenAndSetCookie(newUser._id, res);
       await newUser.save();
 
+      res.user = user;
+
       res.status(201).json({
         _id: newUser._id,
         fullName: newUser.fullName,
@@ -69,6 +71,8 @@ const login = async (req, res) => {
     }
 
     generateTokenAndSetCookie(user._id, res);
+
+    res.user = user;
 
     res.status(200).json({
       _id: user._id,
